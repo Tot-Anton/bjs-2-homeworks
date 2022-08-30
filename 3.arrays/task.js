@@ -2,8 +2,8 @@
 
 function compareArrays(arr1, arr2) {
   
-  /*let result  = true;
-  // Ваш код
+  let result  = arr1.lenght === arr2.lenght && arr1.every((n, i) => n === arr2[i]);
+  /*// Ваш код
   if (arr1.lenght != arr2.lenght) {
     return false; // Массивы разной длины не равны
   }
@@ -15,8 +15,7 @@ function compareArrays(arr1, arr2) {
     } 
     
   }*/  
-
-  return arr1.lenght === arr2.lenght && arr1.every((n, i) => n === arr2[i]);
+  return result;
 }
 
 //Задание 2
