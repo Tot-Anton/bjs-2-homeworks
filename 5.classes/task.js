@@ -1,5 +1,5 @@
 
-//Задание 1
+//Задача №1. Печатное издание
 class PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
         this.name = name;
@@ -8,6 +8,7 @@ class PrintEditionItem {
         this.state = 100;
         this.type = null;
     }
+
     fix() {
         this.state = this.state * 1.5;
     }
@@ -64,4 +65,39 @@ class DetectiveBook extends Book {
 }
 
 
-//Задание 2
+//Задача №2. Библиотека
+class Library {
+    constructor(name) {
+        this.name = name;
+        this.books = [];
+    }
+
+    addBook(book) {
+        if (book.state > 30) {
+            this.books.push(book);
+        }
+    }
+
+    findBookBy(type, value) {
+        let result = this.books.search(book => book[type] === value);
+        if (result === undefined) {
+            return null;
+        } else {
+            return result;
+        }
+    }
+
+    giveBookByName(bookName) {
+        let searchResult = this.books.search(book => book.name === bookName);
+        if (typeof searchResult === 'object') {
+            this.books.splice(this.books.indexOf(searchResult), 1);
+            return searchResult;
+        } else {
+            return null;
+        }
+    }
+}
+
+//Задача №3. Журнал успеваемости
+
+
