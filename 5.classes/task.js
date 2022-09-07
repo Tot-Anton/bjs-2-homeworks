@@ -100,4 +100,60 @@ class Library {
 
 //Задача №3. Журнал успеваемости
 
+class Student {
+    constructor(name) {
+        this.name = name;
+        this.marks = {
+            "algebra": [1, 2, 3, 4, 5],
+            "geometry": [1, 2, 3, 4, 5],
+        };
 
+    }
+
+    addMark(mark, subject) {
+        if (mark > 5 || mark < 1) {
+            return "Ошибка, оценка должна быть числом от 1 до 5";
+        } else if (!this.marks[subject]) {
+            this.marks[subject] = [];
+        } else {
+            this.marks[subject].push(mark);
+        }
+    }
+
+    getAverageBySubject(subject) {
+        if (this.marks[subject]) {
+            return "Несуществующий предмет";
+        } else {
+            return this.marks[subject].reduce((acc, mark) => acc + mark, 0) / this.marks[subject].length;
+        }
+
+        /*let sum = 0;
+        for (let i = 0; i < this.marks[subject].length; i++) {
+            sum += this.marks[subject][i];            
+        }
+        return sum;*/
+
+    }
+
+    getAverage() {
+        return Object.keys(this.marks).reduce((acc, subject) => acc + this.getAverageBySubject(subject), 0) / Object.keys(this.marks).length;
+
+        /*const subject = Object.keys(this.marks);
+        let sum = 0;
+        for (let i = 0; i < subject.length; i++) {
+            sum += this.getAverageBySubject(subject[i]);            
+        }
+        return sum / subject.length;*/
+    }
+}
+/*
+const student = new Student("Олег Никифоров");
+student.addMark(5, "algebra");
+student.addMark(5, "algebra");
+student.addMark(5, "geometry");
+student.addMark(4, "geometry");
+student.addMark(6, "geometry"); // "Ошибка, оценка должна быть числом от 1 до 5"
+student.getAverageBySubject("geometry"); // Средний балл по предмету geometry 4.5
+student.getAverageBySubject("biology"); // Несуществующий предмет
+student.getAverage(); // Средний балл по всем предметам 4.75
+student.exclude("Исключен за попытку подделать оценки");*/
