@@ -79,7 +79,7 @@ class Library {
     }
 
     findBookBy(type, value) {
-        let result = this.books.search(book => book[type] === value);
+        let result = this.books.find(book => book[type] === value);
         if (result === undefined) {
             return null;
         } else {
@@ -88,7 +88,7 @@ class Library {
     }
 
     giveBookByName(bookName) {
-        let searchResult = this.books.search(book => book.name === bookName);
+        let searchResult = this.books.find(book => book.name === bookName);
         if (typeof searchResult === 'object') {
             this.books.splice(this.books.indexOf(searchResult), 1);
             return searchResult;
