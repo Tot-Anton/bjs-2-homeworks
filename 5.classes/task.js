@@ -103,10 +103,7 @@ class Library {
 class Student {
     constructor(name) {
         this.name = name;
-        this.marks = {
-            "algebra": [1, 2, 3, 4, 5],
-            "geometry": [1, 2, 3, 4, 5],
-        };
+        this.marks = [];
 
     }
 
@@ -121,29 +118,29 @@ class Student {
     }
 
     getAverageBySubject(subject) {
-        if (this.marks[subject]) {
-            return "Несуществующий предмет";
-        } else {
+        /*if (this.marks[subject]) {
+            return console.log ('Несуществующий предмет');
+        } else {    
             return this.marks[subject].reduce((acc, mark) => acc + mark, 0) / this.marks[subject].length;
-        }
+        }*/
 
-        /*let sum = 0;
+        let sum = 0;
         for (let i = 0; i < this.marks[subject].length; i++) {
             sum += this.marks[subject][i];            
         }
-        return sum;*/
+        return (sum / this.marks[subject].length);
 
     }
 
     getAverage() {
-        return Object.keys(this.marks).reduce((acc, subject) => acc + this.getAverageBySubject(subject), 0) / Object.keys(this.marks).length;
+        //return Object.keys(this.marks).reduce((acc, subject) => acc + this.getAverageBySubject(subject), 0) / Object.keys(this.marks).length;
 
-        /*const subject = Object.keys(this.marks);
+        const subject = Object.keys(this.marks);
         let sum = 0;
         for (let i = 0; i < subject.length; i++) {
             sum += this.getAverageBySubject(subject[i]);            
         }
-        return sum / subject.length;*/
+        return sum / subject.length;
     }
 }
 /*
